@@ -2,16 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default async function Home() {
-  const graphqlURL = "http://192.168.0.219:1338/graphql";
-  const response = await fetch(graphqlURL, {
+  const response = await fetch(process.env.NEXT_PUBLIC_STRAPI_URL!, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
     },
-    body: JSON.stringify({ query: "{ authors { documentId } }" }),
+    body: JSON.stringify({ query: "{ posts { documentId, title } }" }),
   })
-  const data = await response.json();
+  const { data : { posts } } = await response.json();
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
@@ -22,9 +21,16 @@ export default async function Home() {
           alt="Next.js logo"
           width={180}
           height={38}
+          style={{ height: 'auto' }}
           priority
         />
-        <pre>{JSON.stringify(data, null, 2)}</pre>
+        
+        { posts.map((post: { documentId: string, title: string }) => (
+          <div key={post.documentId}>
+            <h2>{post.title}</h2>
+          </div>
+        )) }
+        
         <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
           <li className="mb-2">
             Get started by editing{" "}

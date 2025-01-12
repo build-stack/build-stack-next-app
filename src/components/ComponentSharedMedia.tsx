@@ -9,6 +9,7 @@ interface ComponentSharedMediaProps {
 }
 
 const ComponentSharedMedia = ({ file }: ComponentSharedMediaProps) => {
+    console.log(file);
     return (
         <Image
           src={ getFullUrl(file.url) }
@@ -24,5 +25,5 @@ const ComponentSharedMedia = ({ file }: ComponentSharedMediaProps) => {
   
   // Helper function
   const getFullUrl = (url: string) =>
-    `${process.env.NEXT_PUBLIC_STRAPI_URL || "http://192.168.0.219:1338"}${url}`;
+    `${process.env.NEXT_PUBLIC_STRAPI_URL || ""}${url}`;
   
