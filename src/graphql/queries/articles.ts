@@ -28,28 +28,29 @@ export const GET_POSTS = gql`
     query GetPosts {
         posts {
             documentId
-            Title
-            Contents {
-                ... on ComponentSharedText {
-                    id
-                    Markdown
+            title
+            blocks {
+            ... on ComponentSharedText {
+                id
+                Markdown
+            }
+            ... on ComponentSharedShared {
+                id
+                Media {
+                documentId
+                previewUrl
+                name
+                size
+                url
+                formats
                 }
-                ... on ComponentSharedShared {
-                    id
-                    Media {
-                    documentId
-                    previewUrl
-                    name
-                    size
-                    url
-                    formats
-                    }
-                }
-                ... on Error {
-                    code
-                    message
-                }
+            }
+            ... on Error {
+                code
+                message
+            }
             }
         }
     }
+
 `

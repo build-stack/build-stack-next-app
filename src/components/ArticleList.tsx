@@ -13,9 +13,9 @@ async function ArticleList() {
         {/* eslint-disable  @typescript-eslint/no-explicit-any */}
         { data.posts.map((article: any) => (
             <div key={article.documentId} data-id={article.documentId} className="my-4">
-                <h2 className="text-xl font-bold">{article.Title}</h2>
+                <h2 className="text-xl font-bold">{article.title}</h2>
                 {/* eslint-disable  @typescript-eslint/no-explicit-any */}
-                { article.Contents?.map((block: any) => (
+                { article.blocks?.map((block: any) => (
                     <div key={block.id }>
                         { block.__typename === "ComponentSharedShared" && <ComponentSharedMedia file={block.Media} /> }
                         <MarkdownCode content={block.Markdown} />
