@@ -97,7 +97,7 @@ export default async function Home() {
         </Link>
         <Link
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="/courses"
+          href="/posts"
         >
           <Image
             aria-hidden

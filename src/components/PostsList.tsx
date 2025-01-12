@@ -3,7 +3,7 @@ import { query } from "@/lib/apollo-client";
 import ComponentSharedMedia from "./ComponentSharedMedia";
 import MarkdownCode from "./Markdown";
 
-async function ArticleList() {
+async function PostsList() {
     const { data, error } = await query({ query: GET_POSTS });
     if (error) {
         return <div>Error loading posts</div>
@@ -26,4 +26,4 @@ async function ArticleList() {
     </div>
 }
 
-export default ArticleList;
+export default PostsList;
