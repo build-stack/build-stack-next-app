@@ -25,5 +25,12 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      # Start the Next.js server and ensure it's ready
+      - name: Build and start Next.js
+        run: |
+          npm run build
+          npm run start & # Run in background
+          npx wait-on http://localhost:3000 # Wait for server to be ready
+
       - name: Run Lighthouse CI
         run: npx lhci autorun
