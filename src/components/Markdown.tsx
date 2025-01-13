@@ -9,11 +9,11 @@ interface MarkdownProps {
 function MarkdownCode({ content }: MarkdownProps) {
     return (
         <Markdown
-            className="max-w-2xl py-4 mx-2 rounded-4xl"
+            className="max-w-2xl py-12 px-4 rounded-4xl bg-gray-25 w-full rounded-xl"
             components={{
-                code({ inline, className, children, ...props }) {
+                code({ className, children, ...props }) {
                     const match = /language-(\w+)/.exec(className || '');
-                    return !inline && match ? (
+                    return match ? (
                         <div className="relative my-4 rounded-lg shadow-lg bg-gray-900">
                             {/* MacBook-like Toolbar */}
                             <div className="flex items-center h-8 px-3 space-x-2 bg-gray-800 rounded-t-lg">
@@ -21,7 +21,6 @@ function MarkdownCode({ content }: MarkdownProps) {
                                 <span className="w-3 h-3 bg-yellow-500 rounded-full"></span>
                                 <span className="w-3 h-3 bg-green-500 rounded-full"></span>
                             </div>
-                            {/* Code Block */}
                             <SyntaxHighlighter
                                 style={oneDark}
                                 language={match[1]}

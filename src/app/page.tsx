@@ -1,17 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
+import { query } from "@/lib/apollo-client";
+import { GET_POSTS } from "@/graphql/queries/posts";
 
 export default async function Home() {
-  const response = await fetch(process.env.NEXT_PUBLIC_STRAPI_URL!, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify({ query: "{ posts { documentId, title } }" }),
-  })
-  const { data : { posts } } = await response.json();
+  // const response = await fetch(process.env.NEXT_PUBLIC_STRAPI_URL!, {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //     Accept: "application/json",
+  //   },
+  //   body: JSON.stringify({ query: "{ posts { documentId, title } }" }),
+  // })
+  // const { data : { posts } } = await response.json();
 
+  const { data } = await query({ query: GET_POSTS, variables: { page: 1, pageSize: 10 } });
+  const { posts } = data;
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
@@ -25,9 +29,11 @@ export default async function Home() {
           priority
         />
         
-        { posts.map((post: { documentId: string, title: string }) => (
+        { posts.map((post: { documentId: string, title: string, slug: string }) => (
           <div key={post.documentId}>
-            <h2>{post.title}</h2>
+            <Link href={`/p/${post.slug}`}>
+              <h2>{post.title}</h2>
+            </Link>
           </div>
         )) }
         
