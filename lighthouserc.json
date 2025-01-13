@@ -3,7 +3,10 @@
       "collect": {
         "url": ["http://localhost:3000"],
         "startServerCommand": "npm run build && npm start",
-        "numberOfRuns": 3
+        "numberOfRuns": 3,
+        "settings": {
+          "disableStorageReset": true
+        }
       },
       "assert": {
         "assertions": {
