@@ -5,12 +5,16 @@
 :root {
   --background: #ffffff;
   --foreground: #1F2124;
+  --icon-size: 40px; /* Controls the overall size */
+  --stroke-color: #0f117a; /* Line color */
+  --stroke-width: 4px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --stroke-color: #ededed;
   }
 }
 

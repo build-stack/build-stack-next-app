@@ -3,6 +3,7 @@ import Link from "next/link";
 import { query } from "@/lib/apollo-client";
 import { GET_POSTS } from "@/graphql/queries/posts";
 import Header from "@/components/Header";
+import Featured from "@/components/Featured";
 
 export default async function Home() {
 
@@ -11,14 +12,10 @@ export default async function Home() {
   return (
     <>
         <Header />
-        <main className="max-w-7xl px-4 mx-auto flex flex-col gap-8 row-start-2 items-start justify-items-center font-[family-name:var(--font-geist-sans)]">
-          <h2 className="text-2xl font-bold">Latest posts</h2>
+        <main className="max-w-7xl px-4 mx-auto flex flex-col row-start-2 items-start justify-items-center font-[family-name:var(--font-geist-sans)]">
+          <h2 className="text-2xl font-bold mb-4">{'Featured posts'}</h2>
           { posts.map((post: { documentId: string, title: string, slug: string }) => (
-            <div key={post.documentId} className="w-full">
-              <Link href={`/p/${post.slug}`}>
-                <h2>{post.title}</h2>
-              </Link>
-            </div>
+            <Featured key={post.documentId} title={post.title} slug={post.slug} />
           )) }
         </main>
         <footer className="row-start-3 flex gap-6 py-12 flex-wrap items-center justify-center">

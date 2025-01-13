@@ -2,9 +2,9 @@ import Link from "next/link";
 import SubscribeForm from "./SubscribeForm";
 import { FaXTwitter, FaLinkedinIn } from 'react-icons/fa6';
 import Button from "./Button";
+import HamburgerButton from "./HamburgetButton/HamburgerButton";
 
 const Header = ({ navOnly = false }) => {
-    
     return (
         <header className="mb-12">
             <nav className="p-4 border-b border-slate-200 dark:border-slate-800">
@@ -15,7 +15,10 @@ const Header = ({ navOnly = false }) => {
                             <span className="font-black">Corneliu</span>
                         </h1>
                     </Link>
-                    <Button>{'Subscribe'}</Button>
+                    <div className="flex flex-row justify-between items-center">
+                        <Button className="mr-4">{'Subscribe'}</Button>
+                        <HamburgerButton />
+                    </div>
                 </ul>
             </nav>
             {!navOnly && (
@@ -26,9 +29,7 @@ const Header = ({ navOnly = false }) => {
                     <p className="text-slate-600 dark:text-slate-300 mt-4">
                         { 'Discover the skills and strategies to level up from junior to senior even without a computer science degree' }
                     </p>
-
                     <SubscribeForm />
-                    
                     <div className="flex flex-row justify-between items-center mt-12">
                         <div className="flex flex-col justify-start items-start">
                             <p className="text-sm font-extra-light text-slate-600">
