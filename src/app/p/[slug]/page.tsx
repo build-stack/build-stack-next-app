@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { GET_POST_BY_SLUG } from "@/graphql/queries/posts";
 import { query } from "@/lib/apollo-client";
 import MarkdownCode from "@/components/Markdown";
