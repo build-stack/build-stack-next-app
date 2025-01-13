@@ -38,6 +38,6 @@ jobs:
           npx wait-on http://localhost:3001 --timeout 60000 # Wait for server to be ready
 
       - name: Run Lighthouse CI
-        env:
-          LHCI_GITHUB_APP_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # env:
+        #   LHCI_GITHUB_APP_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx lhci autorun
