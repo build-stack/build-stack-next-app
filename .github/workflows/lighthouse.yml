@@ -27,6 +27,9 @@ jobs:
 
       # Start the Next.js server and ensure it's ready
       - name: Build and start Next.js
+        env:
+          NEXT_PUBLIC_STRAPI_URL: ${{ secrets.NEXT_PUBLIC_STRAPI_URL }}
+          NODE_TLS_REJECT_UNAUTHORIZED: ${{ secrets.NODE_TLS_REJECT_UNAUTHORIZED }}
         run: |
           npm run build
           npm run start & # Run in background
