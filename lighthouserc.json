@@ -1,9 +1,9 @@
 {
     "ci": {
       "collect": {
-        "startServerCommand": "PORT=3001 npm run start",
+        "startServerCommand": "PORT=3000 npm run start",
         "startServerReadyPattern": "ready started server on",
-        "url": ["http://localhost:3001"],
+        "url": ["http://localhost:3000"],
         "numberOfRuns": 1,
         "settings": {
           "chromeFlags": "--no-sandbox --disable-gpu"
