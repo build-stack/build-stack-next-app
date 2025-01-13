@@ -12,6 +12,8 @@ on:
 jobs:
   lighthouse:
     runs-on: ubuntu-latest
+    env:
+      PORT: 3001  # Use a different port
 
     steps:
       - name: Checkout Code
@@ -32,8 +34,10 @@ jobs:
           NODE_TLS_REJECT_UNAUTHORIZED: ${{ secrets.NODE_TLS_REJECT_UNAUTHORIZED }}
         run: |
           npm run build
-          npm run start & # Run in background
-          npx wait-on http://localhost:3000 # Wait for server to be ready
+          PORT=3001 npm run start & # Run in background
+          npx wait-on http://localhost:3001 --timeout 60000 # Wait for server to be ready
 
       - name: Run Lighthouse CI
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx lhci autorun
