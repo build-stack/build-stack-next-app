@@ -9,10 +9,11 @@ interface ComponentSharedMediaProps {
 }
 
 const ComponentSharedMedia = ({ file }: ComponentSharedMediaProps) => {
+    if(!file) return null;
     return (
         <Image
-          src={ getFullUrl(file.url) }
-          alt={ file.name || "Media File" }
+          src={ file?.url || "" }
+          alt={ file?.name || "Media File" }
           width={ 200 }
           height={ 200 }
           priority
@@ -21,8 +22,3 @@ const ComponentSharedMedia = ({ file }: ComponentSharedMediaProps) => {
   };
   
   export default ComponentSharedMedia;
-  
-  // Helper function
-  const getFullUrl = (url: string) =>
-    `${process.env.NEXT_PUBLIC_STRAPI_URL || "http://192.168.0.219:1338"}${url}`;
-  

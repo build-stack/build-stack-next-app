@@ -1,0 +1,43 @@
+name: Lighthouse CI
+
+on:
+  pull_request:
+    branches:
+      - main
+      - features
+  push:
+    branches:
+      - main
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    env:
+      PORT: 3001  # Use a different port
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm install
+
+      # Start the Next.js server and ensure it's ready
+      - name: Build and start Next.js
+        env:
+          NEXT_PUBLIC_STRAPI_URL: ${{ secrets.NEXT_PUBLIC_STRAPI_URL }}
+          NODE_TLS_REJECT_UNAUTHORIZED: ${{ secrets.NODE_TLS_REJECT_UNAUTHORIZED }}
+        run: |
+          npm run build
+          PORT=3001 npm run start & # Run in background
+          npx wait-on http://localhost:3001 --timeout 60000 # Wait for server to be ready
+
+      - name: Run Lighthouse CI
+        # env:
+        #   LHCI_GITHUB_APP_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx lhci autorun

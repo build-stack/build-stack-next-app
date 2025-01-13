@@ -3,12 +3,10 @@ import {
     registerApolloClient,
     ApolloClient,
     InMemoryCache,
-  } from "@apollo/experimental-nextjs-app-support";
+} from "@apollo/experimental-nextjs-app-support";
 
 const httpLink = new HttpLink({
-    // @todo Read from env.
-    uri: 'http://funstation.go.ro:1337/graphql', // Your Strapi GraphQL endpoint
-    // credentials: 'same-origin'  // Or 'include' if your API is on a different domain
+    uri: process.env.NEXT_PUBLIC_STRAPI_URL,
 })
 
 export const { getClient, query, PreloadQuery } = registerApolloClient(() => {
