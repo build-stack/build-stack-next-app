@@ -2,6 +2,7 @@ import Image from "next/image";
 import { GET_POST_BY_SLUG } from "@/graphql/queries/posts";
 import { query } from "@/lib/apollo-client";
 import MarkdownCode from "@/components/Markdown";
+import Header from "@/components/Header";
 
 type MarkdownBlockType = {
     id: string;
@@ -33,8 +34,9 @@ export default async function Page({
     }
 
     return (
-      <div className="grid grid-rows-[20px_1fr_20px] justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-        <main className="flex flex-col gap-8 row-start-2 sm:items-start">
+      <>
+        <Header navOnly={true} />
+        <main className="flex flex-col gap-8 row-start-2 items-center justify-items-center min-h-screen sm:p-20 font-[family-name:var(--font-geist-sans)]">
           <Image
             className="dark:invert"
             src="/next.svg"
@@ -47,7 +49,7 @@ export default async function Page({
           <h1 className="text-2xl font-bold">{post.title}</h1>
           { post.blocks?.map( renderBlock) }
         </main>
-      </div>
+      </>
     )
 }
 
