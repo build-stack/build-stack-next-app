@@ -9,7 +9,7 @@ interface MarkdownProps {
 function MarkdownCode({ content }: MarkdownProps) {
     return (
         <Markdown
-            className="max-w-2xl py-12 px-4 rounded-4xl bg-gray-25 w-full rounded-xl"
+            className="max-w-2xl pb-4 px-4 rounded-4xl bg-gray-25 w-full rounded-xl"
             components={{
                 code({ className, children, ...props }) {
                     const match = /language-(\w+)/.exec(className || '');

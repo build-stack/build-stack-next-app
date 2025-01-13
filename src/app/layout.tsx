@@ -1,16 +1,48 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from 'next/font/local';
 import "./globals.css";
 import { ApolloWrapper } from "./ApolloWrapper";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const hkGrotesk = localFont({
+  src: [
+    {
+      path: './../fonts/HKGrotesk/HKGrotesk-Thin.woff2',
+      weight: '100',
+      style: 'normal',
+    },
+    {
+      path: './../fonts/HKGrotesk/HKGrotesk-Light.woff2',
+      weight: '200',
+      style: 'normal',
+    },
+    {
+      path: './../fonts/HKGrotesk/HKGrotesk-Regular.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+  ],
+  variable: "--font-hk-grotesk",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const aquawaxPro = localFont({
+  src: [
+    {
+      path: './../fonts/Aquawax-Pro/Aquawax Pro Light/Aquawax-Pro-Light.woff2',
+      weight: '300',
+      style: 'normal',
+    },
+    {
+      path: './../fonts/Aquawax-Pro/Aquawax Pro Medium/Aquawax-Pro-Medium.woff2',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: './../fonts/Aquawax-Pro/Aquawax Pro UltraBold/Aquawax-Pro-UltraBold.woff2',
+      weight: '900',
+      style: 'normal',
+    },
+  ],
+  variable: "--font-aquawax-pro",
 });
 
 export const metadata: Metadata = {
@@ -37,7 +69,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${hkGrotesk.variable} ${aquawaxPro.variable} antialiased bg-slate-50 dark:bg-slate-900`}
       >
         <ApolloWrapper>{children}</ApolloWrapper>
       </body>

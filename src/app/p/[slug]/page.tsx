@@ -36,17 +36,8 @@ export default async function Page({
     return (
       <>
         <Header navOnly={true} />
-        <main className="flex flex-col gap-8 row-start-2 items-center justify-items-center min-h-screen sm:p-20 font-[family-name:var(--font-geist-sans)]">
-          <Image
-            className="dark:invert"
-            src="/next.svg"
-            alt="Next.js logo"
-            width={180}
-            height={38}
-            style={{ height: 'auto' }}
-            priority
-          />
-          <h1 className="text-2xl font-bold">{post.title}</h1>
+        <main className="max-w-7xl mx-auto flex flex-col gap-4 row-start-2 justify-items-center min-h-screen sm:p-20 font-[family-name:var(--font-geist-sans)]">
+          <h1 className="mx-4 mb-8 text-3xl font-bold">{post.title}</h1>
           { post.blocks?.map( renderBlock) }
         </main>
       </>
