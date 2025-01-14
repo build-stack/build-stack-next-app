@@ -3,6 +3,10 @@ import localFont from 'next/font/local';
 import "./globals.css";
 import { ApolloWrapper } from "./ApolloWrapper";
 
+import { GoogleTagManager } from '@/components/tracking/GoogleTagManager'
+import { IS_GTM_ENABLED } from '@/lib/tracking/config.tracking'
+import { RootInnerLayout } from '@/components/layouts/RootInnerLayout'
+
 const hkGrotesk = localFont({
   src: [
     {
@@ -71,7 +75,10 @@ export default function RootLayout({
       <body
         className={`${hkGrotesk.variable} ${aquawaxPro.variable} antialiased bg-slate-50 dark:bg-slate-900`}
       >
-        <ApolloWrapper>{children}</ApolloWrapper>
+        {IS_GTM_ENABLED && <GoogleTagManager />}
+        <RootInnerLayout>
+          <ApolloWrapper>{children}</ApolloWrapper>
+        </RootInnerLayout>
       </body>
     </html>
   );

@@ -2,7 +2,7 @@ import Link from "next/link";
 import SubscribeForm from "./SubscribeForm";
 import { FaXTwitter, FaLinkedinIn } from 'react-icons/fa6';
 import Button from "./Button";
-import HamburgerButton from "./HamburgetButton/HamburgerButton";
+import HamburgerButton from "./hamburget-button/HamburgerButton";
 
 const Header = ({ navOnly = false }) => {
     return (
