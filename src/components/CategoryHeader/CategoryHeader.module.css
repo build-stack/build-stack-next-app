@@ -1,0 +1,19 @@
+.categoryHeaderHeader {
+    display: flex;
+    width: 100%;
+    grid-column: m1-end / m2-start;
+}
+.categoryHeader {
+    flex: 1;    
+    position: relative;
+    height: min(50vw, calc(var(--gutter-y)* 22));
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+.categoryHeaderText {
+    z-index: 5;
+    position: absolute;
+    bottom: 0;
+    margin: 0 1.5rem;
+    margin-bottom: min(8cqw, calc(var(--gutter-y)* 4));
+}

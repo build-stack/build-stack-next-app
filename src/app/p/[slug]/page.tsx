@@ -19,6 +19,25 @@ type MediaBlockType = {
 
 type BlockType = { __typename: string } & (MarkdownBlockType | MediaBlockType);
 
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  const slug = params.slug;
+
+  const { data, error } = await query({ query: GET_POST_BY_SLUG, variables: { slug } });
+
+  if (!data?.posts?.length || error) {
+    return {
+      title: 'Post Not Found - Corneliu Iancu', // Fallback title if the post is not found
+    };
+  }
+
+  const post = data.posts[0];
+
+  return {
+    title: `${post.title} - Corneliu Iancu`,
+  };
+}
+
+
 export default async function Page({
     params,
   }: {

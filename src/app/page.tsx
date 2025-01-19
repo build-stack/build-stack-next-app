@@ -1,22 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
-import { query } from "@/lib/apollo-client";
-import { GET_POSTS } from "@/graphql/queries/posts";
 import Header from "@/components/Header";
-import Featured from "@/components/Featured";
+import RecentPosts from "@/components/RecentPosts";
+import RecentGuides from "@/components/RecentGuides";
 
 export default async function Home() {
-
-  const { data } = await query({ query: GET_POSTS, variables: { page: 1, pageSize: 10 } });
-  const { posts } = data;
   return (
     <>
         <Header />
         <main className="max-w-7xl px-4 mx-auto flex flex-col row-start-2 items-start justify-items-center font-[family-name:var(--font-geist-sans)]">
-          <h2 className="text-2xl font-bold mb-4">{'Featured posts'}</h2>
-          { posts.map((post: { documentId: string, title: string, slug: string }) => (
-            <Featured key={post.documentId} title={post.title} slug={post.slug} />
-          )) }
+          <RecentPosts />
+          <RecentGuides />
         </main>
         <footer className="row-start-3 flex gap-6 py-12 flex-wrap items-center justify-center">
           <Link

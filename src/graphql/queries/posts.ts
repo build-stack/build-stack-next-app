@@ -4,6 +4,7 @@ export const GET_POSTS = gql`
     query GetPosts($page: Int, $pageSize: Int) {
         posts(sort: "createdAt:asc", pagination: { page: $page, pageSize: $pageSize }) {
             documentId
+            description
             title
             slug
         }
