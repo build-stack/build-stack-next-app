@@ -6,22 +6,22 @@ import HamburgerButton from "./hamburget-button/HamburgerButton";
 
 const Header = ({ navOnly = false }) => {
     return (
-        <header className="mb-12">
-            <nav className="p-4 border-b border-slate-200 dark:border-slate-800">
-                <ul className="flex gap-4 max-w-7xl mx-auto justify-between items-center">
-                    <Link href="/">
+        <header style={{ gridTemplateColumns: 'auto 1fr', gridColumn: 'm1-end/m2-start'}} className="grid">
+            <nav className="border-b border-slate-200 dark:border-slate-800">
+                <ul className="grid">
+                    <Link href="/" style={{ gridColumn: 'm1-end/0' }}>
                         <h1 className="text-lg font-light">
-                            {'Code with '}
-                            <span className="font-black">Corneliu</span>
+                            {'Corneliu'} &nbsp;
+                            <span className="font-normal">{'Iancu'}</span>
                         </h1>
                     </Link>
-                    <div className="flex flex-row justify-between items-center">
-                        <Button className="mr-4">{'Subscribe'}</Button>
+                    <div className="" style={{ gridColumn: 'g6-start / m2-end' }}>
+                        <Button style={{}} className="mr-4">{'Subscribe'}</Button>
                         <HamburgerButton />
                     </div>
                 </ul>
             </nav>
-            {!navOnly && (
+            {!navOnly && false && (
                 <div className="min-h-[1px] max-w-7xl mx-auto p-4 text-center py-12">
                     <h1 className="text-4xl font-black">
                         { 'Master the art of computer science' }

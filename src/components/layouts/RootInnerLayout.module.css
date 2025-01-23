@@ -1,0 +1,117 @@
+:root {
+    --container-width-1: 100vw;
+    --container-width-2: 320px;
+    --container-width-3: 360px;
+    --container-width-4: 375px;
+    --container-width-5: 414px;
+    --container-width-6: 568px;
+    --container-width-7: 640px;
+    --container-width-8: 667px;
+    --container-width-9: 768px;
+    --container-width-10: 1024px;
+    --container-width-11: 1366px;
+    --container-width-12: 1600px;
+    --container-width: var(--container-width-1);
+    --excess-width: calc(0vw - var(--container-width)); /* Excess width */
+    --gutter: 16px; /* Space between grid items */
+    --columns-desktop: 12; /* 12 columns for desktops */
+    --columns-mobile: 6; /* 6 columns for mobile */
+    --column-width: 1fr; /* Content column size */
+    --margin-width: 16px; /* Margins for left and right */
+    --fluid-margin: calc((var(--excess-width) / 2)); /* Fluid left and right space */
+  }
+  
+.container {
+    display: grid;
+    grid-template-columns: 
+        var(--fluid-margin)
+        var(--margin-width) 
+        var(--column-width) 
+        var(--gutter) 
+        var(--column-width) 
+        var(--gutter) 
+        var(--column-width) 
+        var(--gutter) 
+        var(--column-width) 
+        var(--gutter) 
+        var(--column-width) 
+        var(--gutter) 
+        var(--column-width) 
+        var(--margin-width) 
+        var(--fluid-margin);
+    grid-template-areas: "fm1 m1 c1 g1 c2 g2 c3 g3 c4 g5 c5 g6 c6 m2 fm2";
+    gap: 0; /* No additional gap between tracks */
+}
+.grid-container > div {
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .fm1, .fm2 {
+    grid-area: fm1; /* Left fluid margin */
+  }
+  
+  .m1 {
+    grid-area: m1; /* Left margin */
+  }
+  
+  .c1 {
+    grid-area: c1;
+  }
+  
+  .g1 {
+    grid-area: g1; /* Gutter between columns */
+  }
+  
+  .c2 {
+    grid-area: c2;
+  }
+  
+  .g2 {
+    grid-area: g2;
+  }
+  
+  .c3 {
+    grid-area: c3;
+  }
+  
+  .g3 {
+    grid-area: g3;
+  }
+  
+  .c4 {
+    grid-area: c4;
+  }
+  
+  .g5 {
+    grid-area: g5;
+  }
+  
+  .c5 {
+    grid-area: c5;
+  }
+  
+  .g6 {
+    grid-area: g6;
+  }
+  
+  .c6 {
+    grid-area: c6;
+  }
+  
+  .m2 {
+    grid-area: m2; /* Right margin */
+  }
+  
+  .fm2 {
+    grid-area: fm2; /* Right fluid margin */
+  }
+  
+  @media (min-width: 768px) {
+    :root {
+      --gutter: 24px; /* Increase gutter for larger screens */
+      --column-width: 1fr; /* Maintain flexible content width */
+    }
+  }

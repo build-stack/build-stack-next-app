@@ -6,9 +6,28 @@ import { ReactNode } from 'react'
 import CookieConsent from 'react-cookie-consent'
 import { motion } from 'framer-motion'
 
+import style from './RootInnerLayout.module.css';
+
 export const RootInnerLayout = ({ children }: { children: ReactNode }) => (
   <>
-    <main className="w-full h-full relative">{children}</main>
+    <main className={`${style.container} w-full h-full relative`}>
+      {/* <div className="fm1"></div>
+      <div className="m1"></div>
+      <div className="c1">Content 1</div>
+      <div className="g1"></div>
+      <div className="c2">Content 2</div>
+      <div className="g2"></div>
+      <div className="c3">Content 3</div>
+      <div className="g3"></div>
+      <div className="c4">Content 4</div>
+      <div className="g5"></div>
+      <div className="c5">Content 5</div>
+      <div className="g6"></div>
+      <div className="c6">Content 6</div>
+      <div className="m2"></div>
+      <div className="fm2"></div> */}
+      {children}
+    </main>
     <motion.div
       initial={{ y: '100vh', opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
