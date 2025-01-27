@@ -6,22 +6,33 @@ import HamburgerButton from "./hamburget-button/HamburgerButton";
 
 const Header = ({ navOnly = false }) => {
     return (
-        <header style={{ gridTemplateColumns: 'auto 1fr', gridColumn: 'm1-end/m2-start'}} className="grid">
-            <nav className="border-b border-slate-200 dark:border-slate-800">
-                <ul className="grid">
-                    <Link href="/" style={{ gridColumn: 'm1-end/0' }}>
-                        <h1 className="text-lg font-light">
-                            {'Corneliu'} &nbsp;
-                            <span className="font-normal">{'Iancu'}</span>
-                        </h1>
-                    </Link>
-                    <div className="" style={{ gridColumn: 'g6-start / m2-end' }}>
-                        <Button style={{}} className="mr-4">{'Subscribe'}</Button>
-                        <HamburgerButton />
-                    </div>
-                </ul>
-            </nav>
-            {!navOnly && false && (
+        <header
+            style={{ gridColumn: "m1-end / m2-start", }} // Full width
+            className="grid bg-slate-100">
+            <ul 
+                className="grid"
+                style={{ gridTemplateColumns: "auto 1fr", gap: "16px", }}
+            >
+                <Link href={'/'}>{'Corneliu'} {'Iancu'}</Link>
+                <nav className="flex flex-row justify-between items-center hidden md:block">
+                    <ul className="grid grid-flow-col gap-4 justify-end items-center">
+                        <li>
+                            <Link href="/about">{'About'}</Link>
+                        </li>
+                        <li>
+                            <Link href="/guides">{'Guides'}</Link>
+                        </li>
+                        <li>
+                            <Link href="/posts">{'Posts'}</Link>
+                        </li>
+                        <li>
+                            <Link href="/contact">{'Contact me'}</Link>
+                        </li>
+                    </ul>
+                </nav>
+                <span className="md:hidden" style={{textAlign: 'right'}}>menu</span>
+            </ul>
+            {!navOnly && false && ( // disabled for now
                 <div className="min-h-[1px] max-w-7xl mx-auto p-4 text-center py-12">
                     <h1 className="text-4xl font-black">
                         { 'Master the art of computer science' }

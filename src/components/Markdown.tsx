@@ -3,13 +3,14 @@ import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism'
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 interface MarkdownProps {
-    content: string
+    content: string,
+    style?: React.CSSProperties
 }
 
-function MarkdownCode({ content }: MarkdownProps) {
+function MarkdownCode({ content, style }: MarkdownProps) {
     return (
         <Markdown
-            className="max-w-2xl pb-4 px-4 rounded-4xl bg-gray-25 w-full rounded-xl"
+            className="max-w-2xl pb-4 px-4 rounded-4xl bg-gray-25 w-full rounded-xl" 
             components={{
                 code({ className, children, ...props }) {
                     const match = /language-(\w+)/.exec(className || '');

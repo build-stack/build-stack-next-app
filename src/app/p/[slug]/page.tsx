@@ -54,9 +54,19 @@ export default async function Page({
     return (
       <>
         <Header navOnly={true} />
-        <main className="max-w-7xl mx-auto flex flex-col gap-4 row-start-2 justify-items-center min-h-screen sm:p-20 font-[family-name:var(--font-geist-sans)]">
-          <h1 className="mx-4 mb-8 text-3xl font-bold">{post.title}</h1>
+        <main className="grid" style={{
+          gridColumn: "fm1-end / fm2-start", 
+          gridTemplateColumns: "var(--grid-template-columns)",
+          gridRowGap: "1rem",
+          gridTemplateAreas: "var(--grid-template-areas)",
+        }}>
+          <section className="grid" style={{
+            gridColumn: 'm1/m2',
+            gridTemplateColumns: 'var(--m-start)No worries. I'm wrapping the day, so I'll get on top of any change requests tomorrow morning. 1fr var(--m-end)'
+          }}>
+          <h1 className="mx-4 mb-8 text-3xl font-bold" style={{ gridColumn: 2}}>{post.title}</h1>
           { post.blocks?.map( renderBlock) }
+          </section>
         </main>
       </>
     )

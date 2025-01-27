@@ -8,7 +8,15 @@ export default async function Home() {
   return (
     <>
           <Header />
-          {/* <RecentPosts />
+          <main className="grid" style={{
+              gridColumn: "fm1-end / fm2-start", 
+              gridTemplateColumns: "var(--grid-template-columns)",
+              gridRowGap: "1rem",
+              gridTemplateAreas: "var(--grid-template-areas)",
+            }}>
+            <RecentPosts />
+          </main>
+          
           <RecentGuides />
           <footer className="row-start-3 flex gap-6 py-12 flex-wrap items-center justify-center">
             <Link
@@ -50,7 +58,7 @@ export default async function Home() {
               />
               Courses
             </Link>
-          </footer> */}
+          </footer>
     </>
   );
 }

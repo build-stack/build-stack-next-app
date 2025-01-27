@@ -8,15 +8,54 @@
   --icon-size: 40px; /* Controls the overall size */
   --stroke-color: #0f117a; /* Line color */
   --stroke-width: 4px;
+
   /* My really --> custom variables */
-  --column-gap: 1rem;
-  --gutter-y: 1.5rem;
-  --gutter-x: var(--column-gap);
-  --column-count: 6;
-  --column-width: 1fr;
-  --grid-areas: 'all-columns-start' repeat(var(--column-count), var(--column-width)) 'all-columns-end';
-  --border-radius: 1rem;
-  --grid-areas: "c1 c2 c3 c4 c5 c6";
+    --container-width-1: 100vw;
+    --container-width-2: 320px;
+    --container-width-3: 360px;
+    --container-width-4: 375px;
+    --container-width-5: 414px;
+    --container-width-6: 568px;
+    --container-width-7: 640px;
+    --container-width-8: 667px;
+    --container-width-9: 768px;
+    --container-width-10: 1024px;
+    --container-width-11: 1366px;
+    --container-width-12: 1600px;
+    --container-width: var(--container-width-1);
+    --excess-width: calc(0vw - var(--container-width)); /* Excess width */
+    --gutter: 16px; /* Space between grid items */
+    --columns-desktop: 12; /* 12 columns for desktops */
+    --columns-mobile: 6; /* 6 columns for mobile */
+    --column-width: 1fr; /* Content column size */
+    --margin-width: 16px; /* Margins for left and right */
+    --fluid-margin: calc((var(--excess-width) / 2)); /* Fluid left and right space */
+    --grid-template-columns:
+      var(--fluid-margin)
+      var(--margin-width)
+      var(--column-width)
+      var(--gutter)
+      var(--column-width)
+      var(--gutter)
+      var(--column-width)
+      var(--gutter)
+      var(--column-width)
+      var(--gutter)
+      var(--column-width)
+      var(--gutter)
+      var(--column-width)
+      var(--margin-width)
+      var(--fluid-margin);
+    --grid-template-areas: "fm1 m1 c1 g1 c2 g2 c3 g3 c4 g5 c5 g6 c6 m2 fm2";
+    --m-start: 1rem;
+    --m-end: 1rem;
+  }
+
+@media (min-width: 768px) {
+    :root {
+      --gutter: 24px; /* Increase gutter for larger screens */
+      --column-width: 1fr; /* Maintain flexible content width */
+    }
 }
 
 @media (prefers-color-scheme: dark) {
